@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
-import Radium, {StyleRoot} from 'radium';
+
 
 const a = 'hello';
 
@@ -45,18 +45,19 @@ class App extends Component {
     }
 
   render() {
-        const style = {
+      const style = {
           backgroundColor: 'green',
-            font: 'inherit',
-            border: '1x solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            color: 'white',
-            ':hover' : {
+          font: 'inherit',
+          border: '1x solid blue',
+          padding: '8px',
+          cursor: 'pointer',
+          color: 'white',
+          ':hover' : {
               backgroundColor: 'lightgreen',
-                color: 'black'
-            }
-        };
+              color: 'black'
+          }
+      };
+
 
         let persons = null;
         if (this.state.showPersons) {
@@ -82,23 +83,23 @@ class App extends Component {
             );
         }
 
-        const classes = [];
+        const classesArr = [];
 
         if (this.state.persons.length <= 2) {
-            classes.push('red');
+            classesArr.push(classes.red);
         }
         if (this.state.persons.length <= 1) {
-            classes.push('bold')
+            classesArr.push(classes.bold)
         }
 
 
 
     return (
-        <StyleRoot>
 
-      <div className="App">
 
-          <p className={classes.join(' ')}>Hi I am React!!!!</p>
+      <div className={classes.App}>
+
+          <p className={classesArr.join(' ')}>Hi I am React!!!!</p>
 
           <button
               style={style}
@@ -111,9 +112,9 @@ class App extends Component {
 
 
       </div>
-        </StyleRoot>
+
     );
   }
 }
 
-export default Radium(App);
+export default App;
