@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person';
+import Person from '../components/Person/Person';
 
 
 const a = 'hello';
@@ -21,14 +21,16 @@ class App extends Component {
         persons.splice(persenIndex, 1)
         this.setState({persons: persons})
 
-    }
+    };
+
+
 
     togglePersonHandler = () => {
        this.setState({
            showPersons: !this.state.showPersons
        })
 
-    }
+    };
 
 
     nameChangeHandler = (event, id) => {
@@ -42,30 +44,15 @@ class App extends Component {
         persons[personId] = person;
         this.setState({persons: persons})
 
-    }
+    };
 
   render() {
-      const style = {
-          backgroundColor: 'green',
-          font: 'inherit',
-          border: '1x solid blue',
-          padding: '8px',
-          cursor: 'pointer',
-          color: 'white',
-          ':hover' : {
-              backgroundColor: 'lightgreen',
-              color: 'black'
-          }
-      };
 
+
+        let btnClass = '';
 
         let persons = null;
         if (this.state.showPersons) {
-            style.backgroundColor = 'red';
-            style[':hover'] = {
-                backgroundColor: 'blue',
-                    color: 'yellow'
-            }
             persons = (
                 <div>
                     {this.state.persons.map((person, index) => {
@@ -81,15 +68,18 @@ class App extends Component {
                 </div>
 
             );
+            btnClass = classes.Red;
+
         }
 
-        const classesArr = [];
+
+        const classesProps = [];
 
         if (this.state.persons.length <= 2) {
-            classesArr.push(classes.red);
+            classesProps.push(classes.red);
         }
         if (this.state.persons.length <= 1) {
-            classesArr.push(classes.bold)
+            classesProps.push(classes.bold)
         }
 
 
@@ -99,16 +89,16 @@ class App extends Component {
 
       <div className={classes.App}>
 
-          <p className={classesArr.join(' ')}>Hi I am React!!!!</p>
+          <p className={classesProps.join(' ')}>Hi I am React!!!!</p>
 
           <button
-              style={style}
+              className={btnClass}
               onClick={() => this.togglePersonHandler()}>Switch name</button>
 
           {persons}
 
           <h1>Hi i am react App {a}</h1>
-         <p>heloo!!!!!!</p>
+         <p>heloo!!!!!!????</p>
 
 
       </div>
